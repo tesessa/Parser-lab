@@ -26,6 +26,7 @@ class DataLogProgram {
 				for(int j = 1; j < domain.size(); j++) {
 					if(domain.at(i) == domain.at(j) && (j!=i)) {
 						domain.erase(domain.begin()+j);
+						j--;
 					}
 				}
 			}

@@ -55,7 +55,9 @@ class Parser {
 				advanceToken();
 			} else {
 		//		cout << "failure " << s.toString() << endl;
+//				cout << "in match" << endl;
 				dataLog = "Failure!\n  " + s.toString() + "\n";
+//				cout << dataLog << endl;
 				failure = true;
 	//			fail = token.at(0);
 				//cout << "Failure: ";
@@ -69,6 +71,7 @@ class Parser {
 			scheme();
 			schemeList();
 			output << "Schemes(" << schemes << "):" << endl;
+//			cout << "B" << endl;
 			for(Predicate loop : predicates) {
 				output << "  " << loop.toString() << endl;
 			}
@@ -112,7 +115,7 @@ class Parser {
 		}
 
 		void schemeList() {
-			if (tokenType() == ID) {
+			if (tokenType() == ID && failure == false) {
 				scheme();
 				schemeList();
 			} else {
@@ -121,7 +124,7 @@ class Parser {
 		}
 
 		void factList() {
-			if(tokenType() == ID) {
+			if(tokenType() == ID && failure == false) {
 				fact();
 				factList();
 			} else {
@@ -130,7 +133,7 @@ class Parser {
 		}
 
 		void ruleList() {
-			if(tokenType() == ID) {
+			if(tokenType() == ID && failure == false) {
 				rule();
 				ruleList();
 			} else {
@@ -139,7 +142,7 @@ class Parser {
 		}
 
 		void queryList() {
-			if(tokenType() == ID) {
+			if(tokenType() == ID && failure == false) {
 				query();
 				queryList();
 			} else {
@@ -160,6 +163,7 @@ class Parser {
 			 predicates.push_back(temp);
 			 schemes++;
 			 parameters.clear();
+//			 cout << "A" << endl;
                 }
 
                 void fact() {
